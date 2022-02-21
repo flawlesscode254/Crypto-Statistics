@@ -6,7 +6,7 @@ import AppStack from './stacks/AppStack';
 export default function App() {
   return (
     <NavigationContainer>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="light-content" />
       <AppStack />
     </NavigationContainer>
   );

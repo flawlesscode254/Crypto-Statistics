@@ -15,7 +15,7 @@ const CoinExchangesCard = ({
       style={{
         margin: 10,
         padding: 10,
-        backgroundColor: "#069c3f",
+        backgroundColor: "#7a0152",
         borderRadius: 7,
       }}
     >
@@ -98,7 +98,7 @@ const CoinExchangesCard = ({
       <Text style={{
           marginTop: 5
       }}>Bitcoin Volume Traded 24h: <Text style={{
-          color: "blue"
+          color: "#04db2c"
       }}>{`${parseFloat(volume)
         .toFixed(2)
         .toString()
