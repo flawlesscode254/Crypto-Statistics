@@ -1,66 +1,52 @@
-import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  View,
-  Dimensions
-} from "react-native";
+import React from "react";
+import { StyleSheet, Dimensions } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 
 const CoinDetails = () => {
-  const [prices, setPrices] = useState([]);
-  useEffect(() => {
-      fetch(
-        "https://api.coindesk.com/v1/bpi/historical/close.json"
-      )
-      .then((response) => response.json())
-      .then((result) => setPrices(Object.values(result.bpi)))
-  }, []);
-
   return (
-    <View
-      style={{
-        flex: 1,
-      }}
-    >
-      {prices.length > 0 && (
-        <LineChart
-          data={{
-            datasets: [
-              {
-                data: [...prices],
-              },
-            ],
-          }}
-          width={Dimensions.get("window").width}
-          height={220}
-          yAxisLabel="$"
-          yAxisSuffix="k"
-          withInnerLines={false}
-          yAxisInterval={1}
-          chartConfig={{
-            backgroundColor: "#ffffff",
-            backgroundGradientFrom: "#ffffff",
-            backgroundGradientTo: "#ffffff",
-            decimalPlaces: 0,
-            color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-            labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-            style: {
-              borderRadius: 16,
-            },
-            propsForDots: {
-              r: "1",
-              strokeWidth: "1",
-              stroke: "#000000",
-            },
-          }}
-          bezier
-          style={{
-            marginVertical: 8,
-            borderRadius: 16,
-          }}
-        />
-      )}
-    </View>
+    <LineChart
+    data={{
+      labels: ["January", "February", "March", "April", "May", "June"],
+      datasets: [
+        {
+          data: [
+            Math.random() * 100,
+            Math.random() * 100,
+            Math.random() * 100,
+            Math.random() * 100,
+            Math.random() * 100,
+            Math.random() * 100
+          ]
+        }
+      ]
+    }}
+    width={Dimensions.get("window").width} // from react-native
+    height={220}
+    yAxisLabel="$"
+    yAxisSuffix="k"
+    yAxisInterval={1} // optional, defaults to 1
+    chartConfig={{
+      backgroundColor: "#e26a00",
+      backgroundGradientFrom: "#fb8c00",
+      backgroundGradientTo: "#ffa726",
+      decimalPlaces: 2, // optional, defaults to 2dp
+      color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+      labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+      style: {
+        borderRadius: 16
+      },
+      propsForDots: {
+        r: "6",
+        strokeWidth: "2",
+        stroke: "#ffa726"
+      }
+    }}
+    bezier
+    style={{
+      marginVertical: 8,
+      borderRadius: 16
+    }}
+  />
   );
 };
 
