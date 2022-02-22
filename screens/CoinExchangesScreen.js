@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, ActivityIndicator, FlatList } from "react-native";
 
 import CoinExchangesCard from "../componets/CoinExchangesCard";
 
@@ -14,7 +14,7 @@ const CoinExchangesScreen = () => {
   }, []);
   return (
     <View>
-      {exchanges.length > 0 && (
+      {exchanges.length > 0 ? (
         <FlatList
           data={exchanges}
           keyExtractor={(item) => item.id}
@@ -31,6 +31,8 @@ const CoinExchangesScreen = () => {
             );
           }}
         />
+      ) : (
+        <ActivityIndicator color={"red"} size={30} />
       )}
     </View>
   );

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { View, ActivityIndicator, FlatList } from "react-native";
+import { View, ActivityIndicator, FlatList, TouchableOpacity, TextInput } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
-import CoinDetails from "../componets/CryptoDetails"
+import CoinDetails from "../componets/CryptoDetails";
 
 const CryptoCoinsScreen = () => {
   const [coinData, setCoinData] = useState([]);
   const [count, setCount] = useState(1);
   const [show, setShow] = useState(false);
+  const [search, setSearch] = useState();
 
   const getData = async () => {
     await setShow(!show);
@@ -26,6 +28,56 @@ const CryptoCoinsScreen = () => {
         margin: 10,
       }}
     >
+      <View
+        style={{
+          marginBottom: 20,
+        }}
+      >
+        <View
+          style={{
+            backgroundColor: "#0E2A47",
+            marginTop: 10,
+            paddingVertical: 5,
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            borderRadius: 45,
+            flexDirection: "row",
+            paddingHorizontal: 20,
+            color: "white",
+            marginLeft: 10,
+            marginRight: 10,
+          }}
+        >
+          <Ionicons name="analytics" color="#ed1186" size={24} />
+          <TextInput
+            value={search}
+            onChangeText={(text) => setSearch(text)}
+            style={{
+              height: 40,
+              flex: 1,
+              color: "grey",
+              borderRadius: 30,
+              paddingLeft: 10,
+              color: "white",
+            }}
+            placeholderTextColor="#FFF"
+            placeholder="Enter coin to search"
+          />
+          {search ? (
+            <TouchableOpacity
+              onPress={async () => {
+                await getAddressBalance();
+                await getReceived();
+                await getSent();
+                await setSearch("");
+              }}
+            >
+              <Ionicons name="search" color="#F69237" size={24} />
+            </TouchableOpacity>
+          ) : null}
+        </View>
+      </View>
       {coinData.length === 0 ? (
         <ActivityIndicator
           color={"red"}

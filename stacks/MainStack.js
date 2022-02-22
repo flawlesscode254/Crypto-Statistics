@@ -5,6 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import CoinExchangesScreen from "../screens/CoinExchangesScreen";
 import CryptoCoinsScreen from "../screens/CryptoCoinsScreen";
 import BlockChainScreen from "../screens/BlockChainScreen";
+import SettingsScreen from "../screens/SettingsScreen";
 
 const MainStack = () => {
   const Tab = createBottomTabNavigator();
@@ -20,6 +21,9 @@ const MainStack = () => {
           break;
         case "Block Chain":
           iconName = "business";
+          break;
+        case "Settings":
+          iconName = "settings";
           break;
 
         default:
@@ -41,17 +45,18 @@ const MainStack = () => {
       null,
     ],
     headerStyle: {
-      backgroundColor: "#070145"
+      backgroundColor: "#070145",
     },
     headerTitleStyle: {
-      color: "#FFFFFF"
-    }
+      color: "#FFFFFF",
+    },
   });
   return (
     <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen name="Coin Exchanges" component={CoinExchangesScreen} />
       <Tab.Screen name="Crypto Coins" component={CryptoCoinsScreen} />
       <Tab.Screen name="Block Chain" component={BlockChainScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
 };
