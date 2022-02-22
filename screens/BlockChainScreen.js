@@ -25,8 +25,6 @@ const BlockChainScreen = () => {
   const [received, setReceived] = useState();
   const [sent, setSent] = useState();
 
-  const sample = "1EzwoHtiXB4iFwedPr49iywjZn2nnekhoj";
-
   const getUnconfirmedTransactions = () => {
     fetch("https://blockchain.info/q/unconfirmedcount")
       .then((response) => response.json())
@@ -58,7 +56,7 @@ const BlockChainScreen = () => {
       .then((result) => setVolume(result * 0.00000001));
   };
   const getAddressBalance = () => {
-    fetch(`https://blockchain.info/q/addressbalance/${sample}?confirmations=3`)
+    fetch(`https://blockchain.info/q/addressbalance/${search}?confirmations=3`)
       .then((response) => response.json())
       .then((result) => {
         if (result.message) {
@@ -73,7 +71,7 @@ const BlockChainScreen = () => {
   };
   const getReceived = () => {
     fetch(
-      `https://blockchain.info/q/getreceivedbyaddress/${sample}?confirmations=3`
+      `https://blockchain.info/q/getreceivedbyaddress/${search}?confirmations=3`
     )
       .then((response) => response.json())
       .then((result) => {
@@ -89,7 +87,7 @@ const BlockChainScreen = () => {
   };
   const getSent = () => {
     fetch(
-      `https://blockchain.info/q/getsentbyaddress/${sample}?confirmations=3`
+      `https://blockchain.info/q/getsentbyaddress/${search}?confirmations=3`
     )
       .then((response) => response.json())
       .then((result) => {

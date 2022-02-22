@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { View, ActivityIndicator, FlatList, TouchableOpacity, TextInput } from "react-native";
+import {
+  View,
+  ActivityIndicator,
+  FlatList,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import CoinDetails from "../componets/CryptoDetails";
@@ -8,7 +14,7 @@ const CryptoCoinsScreen = () => {
   const [coinData, setCoinData] = useState([]);
   const [count, setCount] = useState(1);
   const [show, setShow] = useState(false);
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("");
 
   const getData = async () => {
     await setShow(!show);
@@ -78,6 +84,28 @@ const CryptoCoinsScreen = () => {
           ) : null}
         </View>
       </View>
+      {
+        coinData.filter((val) => {
+          if (search === "") {
+          } else if (val.name.toLowerCase().includes(search.toLowerCase())) {
+            return val
+          }
+        })
+        .map((val) => (
+          <CoinDetails
+          symbol={val.symbol}
+          name={val.name}
+          currentPrice={val.current_price}
+          change={val.price_change_percentage_24h}
+          image={val.image}
+          cap={val.market_cap}
+          total={val.total_supply}
+          circulating={val.circulating_supply}
+          high={val.high_24h}
+          low={val.low_24h}
+        />
+        ))
+      }
       {coinData.length === 0 ? (
         <ActivityIndicator
           color={"red"}
