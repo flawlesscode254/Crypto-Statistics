@@ -96,7 +96,8 @@ const CoinExchangesCard = ({
         </View>
       </View>
       <Text style={{
-          marginTop: 5
+          marginTop: 5,
+          fontWeight: "bold"
       }}>Bitcoin Volume Traded 24h: <Text style={{
           color: "#04db2c"
       }}>{`${parseFloat(volume)

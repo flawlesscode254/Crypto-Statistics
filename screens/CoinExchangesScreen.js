@@ -40,6 +40,9 @@ const CoinExchangesScreen = () => {
       {exchanges.length > 0 ? (
         <FlatList
           data={exchanges}
+          style={{
+            marginBottom: 70
+          }}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => {
             return (

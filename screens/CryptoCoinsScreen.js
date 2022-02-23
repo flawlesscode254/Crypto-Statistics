@@ -144,6 +144,9 @@ const CryptoCoinsScreen = () => {
           onEndReached={() => {
             setCount(count + 1);
           }}
+          style={{
+            marginBottom: 70
+          }}
           onEndReachedThreshold={0}
           renderItem={({ item }) => {
             return (
@@ -170,7 +173,7 @@ const CryptoCoinsScreen = () => {
             position: "absolute",
             left: 0,
             right: 0,
-            bottom: 60,
+            bottom: 200,
             justifyContent: "center",
             alignItems: "center",
           }}
