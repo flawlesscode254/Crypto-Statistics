@@ -1,19 +1,42 @@
 import React, { useState, useEffect } from "react";
 import { View, ActivityIndicator, FlatList } from "react-native";
+import { AdMobBanner, setTestDeviceIDAsync } from "expo-ads-admob";
 
 import CoinExchangesCard from "../componets/CoinExchangesCard";
 
 const CoinExchangesScreen = () => {
   const [exchanges, setExchanges] = useState([]);
+  useEffect(() => {
+    setTestDeviceIDAsync("SIMULATOR");
+  }, []);
   const apiUrl =
     "https://api.coingecko.com/api/v3/exchanges?per_page=10&page=1";
   useEffect(() => {
-      fetch(apiUrl)
+    fetch(apiUrl)
       .then((response) => response.json())
-      .then((result) => setExchanges(result))
+      .then((result) => setExchanges(result));
   }, []);
   return (
     <View>
+      <View
+        style={{
+          shadowOffset: { width: 5, height: 5 },
+          width: "90%",
+          borderRadius: 5,
+          alignSelf: "center",
+          alignContent: "center",
+          alignItems: "center",
+          marginTop: 10,
+          marginBottom: 10,
+        }}
+      >
+        <AdMobBanner
+          bannerSize="smartBanner"
+          adUnitID="ca-app-pub-3940256099942544/6300978111"
+          servePersonalizedAds={true}
+          onDidFailToReceiveAdWithError={(e) => console.log(e)}
+        />
+      </View>
       {exchanges.length > 0 ? (
         <FlatList
           data={exchanges}

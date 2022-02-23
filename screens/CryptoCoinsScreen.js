@@ -7,6 +7,7 @@ import {
   TextInput,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { AdMobBanner, setTestDeviceIDAsync } from "expo-ads-admob";
 
 import CoinDetails from "../componets/CryptoDetails";
 
@@ -15,6 +16,10 @@ const CryptoCoinsScreen = () => {
   const [count, setCount] = useState(1);
   const [show, setShow] = useState(false);
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    setTestDeviceIDAsync("SIMULATOR");
+  }, []);
 
   const getData = async () => {
     await setShow(!show);
@@ -34,6 +39,25 @@ const CryptoCoinsScreen = () => {
         margin: 10,
       }}
     >
+      <View
+        style={{
+          shadowOffset: { width: 5, height: 5 },
+          width: "90%",
+          borderRadius: 5,
+          alignSelf: "center",
+          alignContent: "center",
+          alignItems: "center",
+          marginTop: 10,
+          marginBottom: 10,
+        }}
+      >
+        <AdMobBanner
+          bannerSize="smartBanner"
+          adUnitID="ca-app-pub-3940256099942544/6300978111"
+          servePersonalizedAds={true}
+          onDidFailToReceiveAdWithError={(e) => console.log(e)}
+        />
+      </View>
       <View
         style={{
           marginBottom: 20,
@@ -84,28 +108,27 @@ const CryptoCoinsScreen = () => {
           ) : null}
         </View>
       </View>
-      {
-        coinData.filter((val) => {
+      {coinData
+        .filter((val) => {
           if (search === "") {
           } else if (val.name.toLowerCase().includes(search.toLowerCase())) {
-            return val
+            return val;
           }
         })
         .map((val) => (
           <CoinDetails
-          symbol={val.symbol}
-          name={val.name}
-          currentPrice={val.current_price}
-          change={val.price_change_percentage_24h}
-          image={val.image}
-          cap={val.market_cap}
-          total={val.total_supply}
-          circulating={val.circulating_supply}
-          high={val.high_24h}
-          low={val.low_24h}
-        />
-        ))
-      }
+            symbol={val.symbol}
+            name={val.name}
+            currentPrice={val.current_price}
+            change={val.price_change_percentage_24h}
+            image={val.image}
+            cap={val.market_cap}
+            total={val.total_supply}
+            circulating={val.circulating_supply}
+            high={val.high_24h}
+            low={val.low_24h}
+          />
+        ))}
       {coinData.length === 0 ? (
         <ActivityIndicator
           color={"red"}

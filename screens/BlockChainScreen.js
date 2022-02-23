@@ -8,6 +8,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { AdMobBanner, setTestDeviceIDAsync } from "expo-ads-admob";
 
 import BlockChainInfo from "../componets/BlockChainInfo";
 import AdressInfo from "../componets/AdressInfo";
@@ -24,6 +25,10 @@ const BlockChainScreen = () => {
   const [balance, setBalance] = useState();
   const [received, setReceived] = useState();
   const [sent, setSent] = useState();
+
+  useEffect(() => {
+    setTestDeviceIDAsync("SIMULATOR");
+  }, []);
 
   const getUnconfirmedTransactions = () => {
     fetch("https://blockchain.info/q/unconfirmedcount")
@@ -115,6 +120,26 @@ const BlockChainScreen = () => {
         margin: 10,
       }}
     >
+      <View
+        style={{
+          shadowOffset: { width: 5, height: 5 },
+          width: "90%",
+          borderRadius: 5,
+          alignSelf: "center",
+          alignContent: "center",
+          alignItems: "center",
+          marginTop: 10,
+          marginBottom: 10,
+        }}
+      >
+        <AdMobBanner
+          bannerSize="smartBanner"
+          adUnitID="ca-app-pub-3940256099942544/6300978111"
+          servePersonalizedAds={true}
+          onDidFailToReceiveAdWithError={(e) => console.log(e)}
+        />
+      </View>
+
       {!!error && (
         <Text
           style={{
@@ -167,7 +192,7 @@ const BlockChainScreen = () => {
                 await getAddressBalance();
                 await getReceived();
                 await getSent();
-                await setSearch("")
+                await setSearch("");
               }}
             >
               <Ionicons name="search" color="#F69237" size={24} />
