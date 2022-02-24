@@ -4,9 +4,9 @@
     "slug": "Crypto-Statistics",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/analysis.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/analysis.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -24,13 +24,13 @@
         "googleMobileAdsAppId": "ca-app-pub-3940256099942544/6300978111"
       },
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/analysis.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.duncanii.CryptoStatistics"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/analysis.png"
     }
   }
 }
