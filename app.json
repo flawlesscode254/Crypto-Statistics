@@ -2,7 +2,7 @@
   "expo": {
     "name": "Crypto-Statistics",
     "slug": "Crypto-Statistics",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/analysis.png",
     "splash": {
@@ -21,13 +21,14 @@
     },
     "android": {
       "config": {
-        "googleMobileAdsAppId": "ca-app-pub-1575625881370911~7202678929"
+        "googleMobileAdsAppId": "ca-app-pub-1575625881370911~2898641833"
       },
       "adaptiveIcon": {
         "foregroundImage": "./assets/analysis.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.duncanii.CryptoStatistics"
+      "package": "com.duncanii.CryptoStatistics",
+      "versionCode": 3
     },
     "web": {
       "favicon": "./assets/analysis.png"

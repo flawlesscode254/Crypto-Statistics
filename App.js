@@ -7,7 +7,7 @@ import AppStack from "./stacks/AppStack";
 
 export default function App() {
   const interstitialID = Platform.select({
-    android: "ca-app-pub-1575625881370911/1758780552",
+    android: "ca-app-pub-1575625881370911/6175897085",
   });
 
   useEffect(() => {

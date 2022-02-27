@@ -53,7 +53,7 @@ const CryptoCoinsScreen = () => {
       >
         <AdMobBanner
           bannerSize="smartBanner"
-          adUnitID="ca-app-pub-1575625881370911/1950352244"
+          adUnitID="ca-app-pub-1575625881370911/3768870375"
           servePersonalizedAds={true}
           onDidFailToReceiveAdWithError={(e) => console.log(e)}
         />
