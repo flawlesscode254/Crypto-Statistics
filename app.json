@@ -28,7 +28,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.duncanii.CryptoStatistics",
-      "versionCode": 3
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/analysis.png"
