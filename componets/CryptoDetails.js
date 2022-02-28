@@ -23,7 +23,7 @@ const CoinDetails = ({
   const [vis, setVis] = useState(false)
 
   const interstitialID = Platform.select({
-    android: "ca-app-pub-3940256099942544/1033173712",
+    android: "ca-app-pub-1575625881370911/6175897085",
   });
 
   const indexOfObject = data.findIndex((obj) => {
@@ -131,7 +131,7 @@ const CoinDetails = ({
         </View>
         <TouchableOpacity
           onPress={async () => {
-            if (indexOfObject % 3 === 0) {
+            if (indexOfObject % 5 === 0) {
               await setVis(!vis)
               await showAd();
               await setShow(!show)
