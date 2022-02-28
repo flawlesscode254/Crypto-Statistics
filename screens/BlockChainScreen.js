@@ -134,7 +134,7 @@ const BlockChainScreen = () => {
       >
         <AdMobBanner
           bannerSize="smartBanner"
-          adUnitID="ca-app-pub-1575625881370911/3768870375"
+          adUnitID="ca-app-pub-3940256099942544/6300978111"
           servePersonalizedAds={true}
           onDidFailToReceiveAdWithError={(e) => console.log(e)}
         />

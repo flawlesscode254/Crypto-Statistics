@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { AdMobInterstitial } from "expo-ads-admob";
+import { Overlay } from "react-native-elements";
 
 import MoreDetails from "./MoreDetails";
 
@@ -14,9 +16,29 @@ const CoinDetails = ({
   total,
   circulating,
   high,
-  low
+  low,
+  data,
 }) => {
   const [show, setShow] = useState(false);
+  const [vis, setVis] = useState(false)
+
+  const interstitialID = Platform.select({
+    android: "ca-app-pub-3940256099942544/1033173712",
+  });
+
+  const indexOfObject = data.findIndex((obj) => {
+    if (obj.name === name) {
+      return true;
+    }
+    return false;
+  });
+
+  const showAd = () => {
+    AdMobInterstitial.setAdUnitID(interstitialID)
+      .then(() => AdMobInterstitial.requestAdAsync())
+      .then(() => AdMobInterstitial.showAdAsync())
+      .then(() => setVis(vis))
+  };
   return (
     <View
       style={{
@@ -26,6 +48,9 @@ const CoinDetails = ({
         backgroundColor: "#012573",
       }}
     >
+      <Overlay isVisible={vis}>
+        <Text>Loading....</Text>
+      </Overlay>
       <View
         style={{
           display: "flex",
@@ -105,8 +130,15 @@ const CoinDetails = ({
             .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</Text>
         </View>
         <TouchableOpacity
-          onPress={() => {
-            setShow(!show);
+          onPress={async () => {
+            if (indexOfObject % 3 === 0) {
+              await setVis(!vis)
+              await showAd();
+              await setShow(!show)
+            }
+            else {
+              setShow(!show)
+            }
           }}
           style={{
             marginLeft: 15,
@@ -120,15 +152,16 @@ const CoinDetails = ({
           />
         </TouchableOpacity>
       </View>
-      {show && 
-        <MoreDetails 
-          cap={cap} 
+      {show && (
+        <MoreDetails
+          key={cap}
+          cap={cap}
           total={total}
           circulating={circulating}
           high={high}
           low={low}
         />
-      }
+      )}
     </View>
   );
 };

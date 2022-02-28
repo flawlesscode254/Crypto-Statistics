@@ -32,7 +32,7 @@ const CoinExchangesScreen = () => {
       >
         <AdMobBanner
           bannerSize="smartBanner"
-          adUnitID="ca-app-pub-1575625881370911/3768870375"
+          adUnitID="ca-app-pub-3940256099942544/6300978111"
           servePersonalizedAds={true}
           onDidFailToReceiveAdWithError={(e) => console.log(e)}
         />
@@ -47,6 +47,7 @@ const CoinExchangesScreen = () => {
           renderItem={({ item }) => {
             return (
               <CoinExchangesCard
+                key={item.name}
                 name={item.name}
                 image={item.image}
                 location={item.country}

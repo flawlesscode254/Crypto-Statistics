@@ -7,7 +7,7 @@ import {
   TextInput,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { AdMobBanner, setTestDeviceIDAsync } from "expo-ads-admob";
+import { AdMobBanner, setTestDeviceIDAsync, AdMobInterstitial } from "expo-ads-admob";
 
 import CoinDetails from "../componets/CryptoDetails";
 
@@ -53,7 +53,7 @@ const CryptoCoinsScreen = () => {
       >
         <AdMobBanner
           bannerSize="smartBanner"
-          adUnitID="ca-app-pub-1575625881370911/3768870375"
+          adUnitID="ca-app-pub-3940256099942544/6300978111"
           servePersonalizedAds={true}
           onDidFailToReceiveAdWithError={(e) => console.log(e)}
         />
@@ -117,6 +117,7 @@ const CryptoCoinsScreen = () => {
         })
         .map((val) => (
           <CoinDetails
+            key={val.id}
             symbol={val.symbol}
             name={val.name}
             currentPrice={val.current_price}
@@ -162,6 +163,7 @@ const CryptoCoinsScreen = () => {
                 circulating={item.circulating_supply}
                 high={item.high_24h}
                 low={item.low_24h}
+                data={coinData}
               />
             );
           }}
