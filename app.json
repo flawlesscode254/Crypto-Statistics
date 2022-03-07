@@ -2,7 +2,7 @@
   "expo": {
     "name": "Crypto-Statistics",
     "slug": "Crypto-Statistics",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/analysis.png",
     "splash": {
@@ -27,8 +27,8 @@
         "foregroundImage": "./assets/analysis.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.duncanii.CryptoStatistics",
-      "versionCode": 4
+      "package": "com.duncanii.cryptostatistics",
+      "versionCode": 5
     },
     "web": {
       "favicon": "./assets/analysis.png"
